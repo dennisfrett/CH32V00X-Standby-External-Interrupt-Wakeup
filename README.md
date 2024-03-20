@@ -1,0 +1,1 @@
+# CH32V00X-Standby-External-Interrupt-Wakeup
