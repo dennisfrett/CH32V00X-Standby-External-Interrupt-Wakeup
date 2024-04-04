@@ -19,7 +19,8 @@ void SetupOtherPins() {
   GPIO_Init(GPIOC, &GPIO_InitStructure);
 }
 
-// Initialize pin D0 as external interrupt.
+// Initialize pin D0 as external interrupt and pull all pins in D up for power
+// saving.
 void InitializeInterrupt() {
   GPIO_InitTypeDef GPIO_InitStructure = {0};
   EXTI_InitTypeDef EXTI_InitStructure = {0};
@@ -27,7 +28,7 @@ void InitializeInterrupt() {
 
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO | RCC_APB2Periph_GPIOD, ENABLE);
 
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_All;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
   GPIO_Init(GPIOD, &GPIO_InitStructure);
